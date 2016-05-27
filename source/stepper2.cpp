@@ -6,23 +6,31 @@
 
 //g++ -Wall -pthread -o foobar foobar.cpp -lpigpio -lrt
 
-int delay_us = 3000;
+// //int A = 12:
+// int B = 16;
+// int C = 20;
+// int D = 21;
+
+
 
 
 int main(){
+    Direction dir;
     //GPIO Initialize
     if (gpioInitialise()<0) return -1;
 
-    gpioSetMode(A,PI_OUTPUT);
-    gpioSetMode(B,PI_OUTPUT);
-    gpioSetMode(C,PI_OUTPUT);
-    gpioSetMode(D,PI_OUTPUT);
+    gpioSetMode(dir.getA(),PI_OUTPUT);
+    gpioSetMode(dir.getB(),PI_OUTPUT);
+    gpioSetMode(dir.getC(),PI_OUTPUT);
+    gpioSetMode(dir.getD(),PI_OUTPUT);
 
-    forward(1.5);
+    //dir.setA(12);
+
+    dir.forward(1.5);
     usleep(500000);
-    reverse(1.5);
+    dir.reverse(1.5);
 
-    stop_motor();
+    dir.stop_motor();
     gpioTerminate();
     return 0;
 }

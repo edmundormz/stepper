@@ -1,10 +1,17 @@
-//GPIO Variables
-int A = 12;
-int B = 16;
-int C = 20;
-int D = 21;
+#include "direction.h"
+#include <pigpio.h>
+#include <unistd.h>
+#include <stdio.h>
 
-void forward(float c){
+Direction::Direction(){
+    A = 12;
+    B = 16;
+    C = 20;
+    D = 21;
+    delay_us = 3000;
+}
+
+void Direction::forward(float c){
     printf("Forward\n");
     float i = c * 256;
     for(float x; x<i;x++){
@@ -66,7 +73,7 @@ void forward(float c){
     }
 }
 
-void reverse(float c){
+void Direction::reverse(float c){
     printf("Backwards\n");
     float i = c * 256;
     for(float x; x<i;x++){
@@ -129,9 +136,45 @@ void reverse(float c){
     }
 }
 
-void stop_motor(){
+void Direction::stop_motor(){
     gpioWrite(A,0);
     gpioWrite(B,0);
     gpioWrite(C,0);
     gpioWrite(D,0);
+}
+
+int Direction::getA(){
+    return A;
+}
+int Direction::getB(){
+    return B;
+}
+int Direction::getC(){
+    return C;
+}
+int Direction::getD(){
+    return D;
+}
+int Direction::getDelay_us(){
+    return delay_us;
+}
+
+void Direction::setA(int x){
+    A = x;
+}
+
+void Direction::setB(int x){
+    B = x;
+}
+
+void Direction::setC(int x){
+    C = x;
+}
+
+void Direction::setD(int x){
+    D = x;
+}
+
+void Direction::setDelay_us(int x){
+    delay_us = x;
 }
