@@ -1,4 +1,4 @@
-#include "direction.h"
+#include "../libraries/direction.h"
 #include <pigpio.h>
 #include <unistd.h>
 #include <stdio.h>

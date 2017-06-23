@@ -1,7 +1,7 @@
 #include <pigpio.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "direction.h"
+#include "../libraries/direction.h"
 
 
 //g++ -Wall -pthread -o foobar foobar.cpp -lpigpio -lrt
@@ -26,9 +26,9 @@ int main(){
 
     //dir.setA(12);
 
-    dir.forward(1.5);
+    dir.forward(0.5);
     usleep(500000);
-    dir.reverse(1.5);
+    dir.reverse(0.5);
 
     dir.stop_motor();
     gpioTerminate();
