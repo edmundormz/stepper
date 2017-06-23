@@ -1,6 +1,8 @@
 #include <pigpio.h>
 #include <unistd.h>
 
+//g++ -Wall -pthread -o foobar foobar.cpp -lpigpio -lrt
+
 //GPIO Variables
 int A = 12;
 int B = 16;
