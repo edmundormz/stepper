@@ -1,16 +1,13 @@
 #include <pigpio.h>
 #include <unistd.h>
 #include <stdio.h>
+#include "direction.h"
+
 
 //g++ -Wall -pthread -o foobar foobar.cpp -lpigpio -lrt
 
-//GPIO Variables
-int A = 12;
-int B = 16;
-int C = 20;
-int D = 21;
+int delay_us = 3000;
 
-int delay_us = 1000000;
 
 int main(){
     //GPIO Initialize
@@ -21,15 +18,11 @@ int main(){
     gpioSetMode(C,PI_OUTPUT);
     gpioSetMode(D,PI_OUTPUT);
 
-    gpioWrite(A,0);
-    gpioWrite(B,0);
-    gpioWrite(C,0);
-    gpioWrite(D,0);
+    forward(1.5);
+    usleep(500000);
+    reverse(1.5);
 
-    printf("Stepper off");
-   
-    //GPIO Terminate
+    stop_motor();
     gpioTerminate();
-
     return 0;
 }
