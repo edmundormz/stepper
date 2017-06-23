@@ -10,8 +10,9 @@ asm:
 	as -o build/stepper.o build/stepper.s
 	as -o build/direction.o build/direction.s
 linker:
-	g++ -o stepper.exe build/stepper.o build/direction.o -lpigpio -pthread
+	g++ -o build/stepper.exe build/stepper.o build/direction.o -lpigpio -pthread
 run:
 	sudo build/stepper.exe
 clean:
-	rm /build/direction.* build/stepper.i build/stepper.o build/stepper.s
+	rm build/stepper.i build/stepper.o build/stepper.s
+	rm build/direction.*
