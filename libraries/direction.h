@@ -14,7 +14,9 @@ int delay_us;
 public:
 Direction();
 void forward(float c);
+void forwardManual();
 void reverse(float c);
+void reverseManual();
 void stop_motor();
 
 int getA();
