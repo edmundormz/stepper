@@ -12,7 +12,7 @@ Direction::Direction(){
 }
 
 void Direction::forward(float c){
-    printf("Forward\n");
+    printf("Automatic Forward\n");
     float i = c * 256;
     for(float x; x<i;x++){
         //Step 1
@@ -73,8 +73,67 @@ void Direction::forward(float c){
     }
 }
 
+void Direction::forwardManual(){
+    printf("Manual Forward\n");
+        //Step 1
+        gpioWrite(A,1);
+        gpioWrite(B,1);
+        gpioWrite(C,0);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 2
+        gpioWrite(A,0);
+        gpioWrite(B,1);
+        gpioWrite(C,1);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 3
+        gpioWrite(A,0);
+        gpioWrite(B,0);
+        gpioWrite(C,1);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 4
+        gpioWrite(A,1);
+        gpioWrite(B,0);
+        gpioWrite(C,0);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 5
+        gpioWrite(A,1);
+        gpioWrite(B,1);
+        gpioWrite(C,0);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 6
+        gpioWrite(A,0);
+        gpioWrite(B,1);
+        gpioWrite(C,1);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 7
+        gpioWrite(A,0);
+        gpioWrite(B,0);
+        gpioWrite(C,1);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 8
+        gpioWrite(A,1);
+        gpioWrite(B,0);
+        gpioWrite(C,0);
+        gpioWrite(D,1);
+        usleep(delay_us);
+    }
+
 void Direction::reverse(float c){
-    printf("Backwards\n");
+    printf("Reverse\n");
     float i = c * 256;
     for(float x; x<i;x++){
         //Step 8
@@ -134,6 +193,65 @@ void Direction::reverse(float c){
         usleep(delay_us);
 
     }
+}
+
+void Direction::reverseManual(){
+    printf("Reverse Manual\n");
+        //Step 8
+        gpioWrite(A,1);
+        gpioWrite(B,0);
+        gpioWrite(C,0);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 7
+        gpioWrite(A,0);
+        gpioWrite(B,0);
+        gpioWrite(C,1);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 6
+        gpioWrite(A,0);
+        gpioWrite(B,1);
+        gpioWrite(C,1);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 5
+        gpioWrite(A,1);
+        gpioWrite(B,1);
+        gpioWrite(C,0);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 4
+        gpioWrite(A,1);
+        gpioWrite(B,0);
+        gpioWrite(C,0);
+        gpioWrite(D,1);
+        usleep(delay_us);
+        
+        //Step 3
+        gpioWrite(A,0);
+        gpioWrite(B,0);
+        gpioWrite(C,1);
+        gpioWrite(D,1);
+        usleep(delay_us);
+
+        //Step 2
+        gpioWrite(A,0);
+        gpioWrite(B,1);
+        gpioWrite(C,1);
+        gpioWrite(D,0);
+        usleep(delay_us);
+
+        //Step 1
+        gpioWrite(A,1);
+        gpioWrite(B,1);
+        gpioWrite(C,0);
+        gpioWrite(D,0);
+        usleep(delay_us);
 }
 
 void Direction::stop_motor(){
